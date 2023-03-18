@@ -28,6 +28,3 @@ API 사용은 크게 두가지 형태가 있습니다.
 ```bash
   curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
-```linux
-  curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"
-```
