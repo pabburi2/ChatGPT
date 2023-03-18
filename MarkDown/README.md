@@ -84,6 +84,9 @@ foreach ($variable as $key => $value) {
 while ($a <= 10) {
   # code...
 }
+
+// git 명령 간단하게 한줄 실행하기
+//  git add .; git commit -m 'markdown'; git push
 ```
 
 ```javascript
