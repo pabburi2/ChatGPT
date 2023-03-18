@@ -25,4 +25,6 @@ API 사용은 크게 두가지 형태가 있습니다.
 
 - 내가 사용가능한 모델 확인하는 방법<br>
   https://platform.openai.com/docs/api-reference/models<br>
+```bash
   curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"
+```
