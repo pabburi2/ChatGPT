@@ -10,6 +10,7 @@
 **▷ 최신버전의 CURL**<br>
 - 최신 버전의 CURL을 사용하면 이 프로그램은 필요 하지 않습니다.<br>
 - 아래 PHP 소스에서 스트림으로 받아 오는 부분은 CURLOPT_WRITEFUNCTION 라인 입니다.
+- 즉, <u>CURL 라이브러리를 사용하면 청크 같은것은 신경쓸 필요가 없습니다.</u>
 ```php
 <?php
   define('OPENAI_API_KEY', 'api-key');
