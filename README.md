@@ -28,3 +28,7 @@ API 사용은 크게 두가지 형태가 있습니다.
 ```bash
   curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
+
+## API 출력방법
+- stream은 사이트 들어가면 한글자씩 나오는 방식. 자바스크립트에서 EventSource 를 사용해야 합니다.
+- 지정하지 않으면 한번에 나오는 방식으로 느린 결과를 얻습니다. 단, 위 스트림과는 결과적으로 같은 시간에 끝날 수도?
