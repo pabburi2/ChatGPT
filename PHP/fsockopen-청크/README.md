@@ -68,3 +68,43 @@
     return strlen($jsonData);
   }
 ```
+
+- 오래된 PHP 버전의 경우 PHP 메뉴얼이 변경 되어 작동이 안될것입니다.
+- 아래와 같은 방식을 이용해야 합니다. 콜백 부분이 약간 다른것을 제외하면 나머지는 모두 동일 합니다.
+```php
+<?php
+  $url        = 'https://api.openai.com/v1/chat/completions';
+  $ch         = curl_init();
+  /**
+   * 스트림 출력
+   *
+   * @param mixed $ch
+   * @param mixed $jsonData
+   *
+   * @return int
+   *
+   */
+  $callback = function ($ch, $jsonData) {
+    echo $jsonData;
+    ob_flush();
+    flush();
+
+    return strlen($jsonData);
+  };
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURL_HTTP_VERSION_1_1, 1);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_HTTPHEADER , $aHeader);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 123);
+  curl_setopt($ch, CURLOPT_VERBOSE, 0);
+  curl_setopt($ch, CURLOPT_HEADER, 0);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+  curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
+  $response     = curl_exec($ch);
+  $aHeaderInfo  = curl_getinfo($ch);
+  curl_close($ch);
+
+```

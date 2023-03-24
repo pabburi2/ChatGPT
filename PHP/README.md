@@ -24,3 +24,27 @@
 ?>
 ```
 - 이벤트 스트림 출력할때 줄바꿈이 한개 또는 두개 있어야 하는 부분등은 테스트를 통해서 확인해 보시면 됩니다.
+<br><br>
+
+**▷ PHP출력 하는데 스트림이 작동을 하지 않을때**<br>
+- [버퍼출력과 관련된 것들](https://stackoverflow.com/questions/4870697/php-flush-that-works-even-in-nginx) 설정에 따라 안되는 경우는 혹시 설정 문제 아닌가 확인해 볼 필요가 있습니다.
+- 설정 문제는 크게 두가지 입니다.(압축, 버퍼사용)
+```
+In php.ini:
+. output_buffering = Off
+. zlib.output_compression = Off
+
+In nginx.conf:
+. gzip off;
+. proxy_buffering off;
+
+Also have this lines at hand, specially if you don't have acces to php.ini:
+@ini_set('zlib.output_compression',0);
+@ini_set('implicit_flush',1);
+@ob_end_clean();
+set_time_limit(0);
+
+Last, if you have it, coment the code bellow:
+ob_start('ob_gzhandler');
+ob_flush();
+```
