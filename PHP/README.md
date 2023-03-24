@@ -11,6 +11,7 @@
 - 아래 페이지에 있는것을 가져온것으로 문제 없는지 확인한 프로그램으로 테스트로 사용해도 무방합니다.<br>
 - Server-sent_events [이벤트소스 샘플 페이지 주소](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 - PHP 헤더에 이벤트 스트림이 있는 것을 확인 하세요.
+- EventSource는 POST 전송은 되지 않습니다.
 ```php
 <?php
   header("Content-Type: text/event-stream");
