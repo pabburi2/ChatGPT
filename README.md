@@ -30,6 +30,20 @@ HTTP 프로토콜을 이용한 json 데이터를 전달하는 방식을 사용�
   curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+
+### GPT4 vision
+시각지능에 대한 것이다. 모르는 도표를 올려 보고 설명해 달라고 하면 생각보다 설명을 잘 하는 편인데 물론 올린 것에 대한 지식은 약간 가지고 있어야 한다.
+* 아래는 픽사베이의 이미지 주소를 넣어주고. 새가 몇마리 인지 물어 본것이다.<br>
+  <a href="https://www.pabburi.co.kr/content/pds/openai-gpt4-vision-%EC%8B%9C%EA%B0%81%EC%A0%95%EB%B3%B4-api-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0/">GPT4 Vision 시각정보 API</a>
+```bash
+
+  curl https://api.openai.com/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer API키" \
+  -d '{"model":"gpt-4-vision-preview","messages":[{"role":"user","content":[{"type":"text","text":"새가 몇 마리"},{"type":"image_url","image_url":{"url":"https://cdn.pixabay.com/photo/2014/11/21/15/39/grey-crowned-cranes-540657_1280.jpg","detail":"high"}}]}],"max_tokens":300}'
+
+```
+
 ## API 출력종류
 - stream은 사이트 들어가면 한글자씩 나오는 방식. 자바스크립트에서 EventSource 를 사용해야 합니다.
 - 지정하지 않으면 한번에 나오는 방식으로 느린 결과를 얻습니다. 단, 위 스트림과는 결과적으로 같은 시간에 끝날 수도?
